@@ -1,0 +1,9 @@
+@use "../../styles/" as s;
+
+.chat-container {
+  display: flex;
+  flex-direction: column-reverse;
+  height: auto;
+  width: 70%;
+  background-color: s.$background;
+}

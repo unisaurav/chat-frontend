@@ -1,0 +1,28 @@
+@use "../../styles/" as s;
+.container {
+  display: flex;
+  background-color: s.$background;
+  height: 100vh;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+input {
+  border: 1px solid s.$border;
+  color: s.$text;
+  padding: 0.5rem 1rem;
+  max-width: 180px;
+}
+.input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  max-width: 180px;
+}
+label {
+  color: red;
+  font-size: small;
+}

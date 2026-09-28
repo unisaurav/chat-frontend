@@ -1,0 +1,12 @@
+@use "../../styles/" as s;
+
+.primary {
+  background-color: s.$primary;
+  border: 1px solid s.$border;
+  border-radius: s.$boarder-radius;
+  padding: 0.5rem 2rem;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  
+}

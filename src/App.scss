@@ -1,0 +1,7 @@
+@use "./styles" as s;
+
+body {
+  min-height: 100vh;
+  background-color: s.$background;
+}
+

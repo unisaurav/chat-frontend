@@ -1,0 +1,19 @@
+@use "../../styles/" as s;
+
+.recent-chats {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  height: auto;
+  overflow-y: scroll;
+  background-color: s.$background;
+  border-right: 1px solid s.$border;
+    &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.recent-contact-card {
+  min-height: 100px;
+  border-bottom: 1px solid s.$border;
+}
