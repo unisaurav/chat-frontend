@@ -1,9 +1,10 @@
-import { useCallback, useMemo } from "react";
-import useUserSearchStore from "../../store/useUserSearchStore";
+import { useMemo } from "react";
+import useUserStore from "../../store/useUserStore";
 import "./RecentChats.scss";
 const RecentChats = ({ userSearching }: { userSearching: boolean }) => {
-  const searchUserResult = useUserSearchStore((state) => state.searchUsers);
+  const searchUserResult = useUserStore((state) => state.searchUsers);
   const emptyArray = Array.from({ length: 5 });
+  const setChatWith = useUserStore((state)=>state.setChatWith)
 
   const renderCards = useMemo(() => {
     if (userSearching && searchUserResult.length == 0) {
@@ -12,14 +13,18 @@ const RecentChats = ({ userSearching }: { userSearching: boolean }) => {
     if (userSearching && searchUserResult.length > 0) {
       return searchUserResult.map((item) => {
         return (
-          <div className="recent-contact-card" key={item.id}>
+          <div className="recent-contact-card" key={item.id} onClick={()=>setChatWith(item)}>
             {item.username}
           </div>
         );
       });
     } else {
-      return emptyArray.map((item,key) => {
-        return <div className="recent-contact-card" key={key}>{"test"+ key}</div>;
+      return emptyArray.map((item, key) => {
+        return (
+          <div className="recent-contact-card" key={key}>
+            {"test" + key}
+          </div>
+        );
       });
     }
   }, [searchUserResult, emptyArray]);

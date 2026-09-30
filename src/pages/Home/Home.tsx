@@ -3,7 +3,7 @@ import Chat from "../Chat/Chat";
 import RecentChats from "../RecentChats/RecentChats";
 import "./Home.scss";
 import Header from "./Header";
-import { useState } from "react";
+import React, { useState } from "react";
 const Home = () => {
   const navigate = useNavigate();
   const [userSearching, setUserSearching] = useState(false);
@@ -17,4 +17,4 @@ const Home = () => {
     </div>
   );
 };
-export default Home;
+export default React.memo(Home);

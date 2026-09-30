@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { createJSONStorage, devtools, persist } from "zustand/middleware";
 
-type users = {
+type user = {
   about?: string;
   avatarUrl?: string;
   id: string;
@@ -11,23 +11,34 @@ type users = {
   username: string;
 };
 
-interface useUserSearchStore {
-  searchUsers: users[];
-  setSearchUsers: (users: users[]) => void;
+interface useUserStore {
+  searchUsers: user[];
+  chatWith: user | null;
+  setSearchUsers: (user: user[]) => void;
+  setChatWith: (chatWithUser: user) => void;
 }
 
-const useUserSearchStore = create<useUserSearchStore>()(
+const useUserStore = create<useUserStore>()(
   devtools(
     persist(
       (set) => ({
         searchUsers: [],
-        setSearchUsers: (searchUsers: users[]) =>
+        chatWith: null,
+        setSearchUsers: (searchUsers: user[]) =>
           set(
             () => ({
               searchUsers: searchUsers,
             }),
             undefined,
             "user/search",
+          ),
+        setChatWith: (chatWithUser: user | null) =>
+          set(
+            () => ({
+              chatWith: chatWithUser,
+            }),
+            undefined,
+            "user/chat-with",
           ),
       }),
       {
@@ -44,4 +55,4 @@ const useUserSearchStore = create<useUserSearchStore>()(
   ),
 );
 
-export default useUserSearchStore;
+export default useUserStore;

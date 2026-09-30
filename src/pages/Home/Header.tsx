@@ -5,7 +5,7 @@ import useAuthStore from "../../store/useAuthStore";
 import { useEffect, useState } from "react";
 import axios, { isAxiosError } from "axios";
 import { BASE_URL, FIND_USER } from "../../constants/AppConstants";
-import useUsersearchStore from "../../store/useUserSearchStore";
+import useUserStore from "../../store/useUserStore";
 
 const Header = ({
   navigate,
@@ -15,11 +15,11 @@ const Header = ({
   setUserSearching: (value: boolean) => void;
 }) => {
   const userDetails = useAuthStore((state) => state.userDetails);
-  const setSearchUser = useUsersearchStore((state) => state.setSearchUsers);
+  const setSearchUser = useUserStore((state) => state.setSearchUsers);
   const [findUser, setFindUser] = useState<string>("");
   useEffect(() => {
     let timer: number;
-    let controller: AbortController = new AbortController();
+    const controller: AbortController = new AbortController();
     const findUserApi = async () => {
       try {
         const response = await axios.get(
@@ -35,7 +35,7 @@ const Header = ({
         }
       }
     };
-    if (findUser.trim().length > 0) {
+    if (findUser.trim().length >= 0) {
       timer = setTimeout(() => {
         findUserApi();
       }, 500);
@@ -51,8 +51,10 @@ const Header = ({
 
   const checkAndSetUserSearch = (value?: string) => {
     if (value !== undefined) {
+      // eslint-disable-next-line @typescript-eslint/no-unused-expressions
       value.trim().length > 0 && setUserSearching(true);
     } else {
+      // eslint-disable-next-line @typescript-eslint/no-unused-expressions
       findUser.trim().length > 0 && setUserSearching(true);
     }
   };
