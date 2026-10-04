@@ -7,10 +7,28 @@
   width: 70%;
   background-color: s.$background;
 }
-.message-and-sent{
-display: flex;
-align-items: center;
+.message-and-sent {
+  display: flex;
+  align-items: center;
 }
-.chat-input{
+.chat-input {
   width: 95%;
+}
+
+.self-message {
+  display: flex;
+  flex-direction: row-reverse;
+  margin-right: 10px;
+}
+
+.not-self-message {
+  display: flex;
+  flex-direction: row;
+  margin-left: 10px;
+}
+
+.display-chat{
+  display: flex;
+  flex-direction: column;
+  gap:10px
 }

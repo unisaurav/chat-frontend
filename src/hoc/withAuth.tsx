@@ -28,7 +28,7 @@ const withAuth = <p extends object>(WrappedComponent: ComponentType<p>) => {
         } catch (e) {
           setWithAuth(false);
           if (axios.isAxiosError(e)) {
-            console.log("Error from axios ");
+            !axios.isCancel && console.log("Error from axios ");
           }
         } finally {
           setLoading(false);
